@@ -10,6 +10,7 @@ zerops:
         - unzip /tmp/x.zip xray -d bin
         - curl -L -o bin/caddy "https://caddyserver.com/api/download?os=linux&arch=amd64"
         - chmod +x bin/xray bin/caddy
+        - ls -la bin
       deployFiles:
         - bin
         - Caddyfile
@@ -19,4 +20,4 @@ zerops:
       ports:
         - port: 8080
           httpSupport: true
-      start: PATH=$PWD/bin:$PATH CADDYFILE=$PWD/Caddyfile sh start.sh
+      start: "sh -c 'PATH=$PWD/bin:$PATH CADDYFILE=$PWD/Caddyfile sh start.sh'"
